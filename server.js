@@ -80,6 +80,106 @@ app.use('/api/', limiter);
 
 // ===== Routes =====
 
+// Serve config.js dynamically (before static files)
+app.get('/config.js', (req, res) => {
+    res.setHeader('Content-Type', 'application/javascript');
+    res.send(`
+// ============================================
+// PERXIA HELP - CLIENT CONFIGURATION (Generated)
+// ============================================
+
+const CONFIG = {
+    API_BASE_URL: window.location.origin + '/api',
+    
+    AZURE: {
+        clientId: '',
+        tenantId: '',
+        redirectUri: window.location.origin + '/auth/callback',
+        scopes: ['openid', 'profile', 'User.Read', 'email']
+    },
+    
+    COPILOT_STUDIO: {
+        iframeUrl: ''
+    },
+    
+    APP: {
+        name: 'Perxia Help',
+        version: '2.0.0',
+        environment: '${process.env.NODE_ENV || 'production'}'
+    },
+    
+    DEEPSEEK: {
+        models: {
+            v3: { id: 'v3', name: 'DeepSeek V3', description: 'Modelo optimizado para conversaciones generales' },
+            r1: { id: 'r1', name: 'DeepSeek R1 (DeepThink)', description: 'Modelo avanzado con razonamiento profundo' }
+        },
+        defaultModel: 'v3'
+    },
+    
+    UPLOAD: {
+        maxFileSize: 10 * 1024 * 1024,
+        allowedExtensions: ['.pdf', '.doc', '.docx', '.txt', '.md'],
+        allowedMimeTypes: [
+            'application/pdf',
+            'application/msword',
+            'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+            'text/plain',
+            'text/markdown'
+        ]
+    },
+    
+    azure: {
+        auth: {
+            clientId: '',
+            authority: '',
+            redirectUri: window.location.origin,
+            postLogoutRedirectUri: window.location.origin,
+            scopes: ['openid', 'profile', 'User.Read', 'email']
+        },
+        cache: {
+            cacheLocation: 'localStorage',
+            storeAuthStateInCookie: false
+        }
+    },
+    
+    app: {
+        name: 'Perxia Help',
+        version: '2.0.0',
+        debug: ${process.env.NODE_ENV !== 'production'}
+    }
+};
+
+let configLoaded = false;
+let configPromise = null;
+
+async function loadDynamicConfig() {
+    if (configLoaded) return;
+    if (configPromise) return configPromise;
+
+    configPromise = (async () => {
+        try {
+            const response = await fetch(CONFIG.API_BASE_URL + '/auth/config');
+            if (response.ok) {
+                const config = await response.json();
+                CONFIG.AZURE.clientId = config.clientId;
+                CONFIG.AZURE.tenantId = config.tenantId;
+                CONFIG.azure.auth.clientId = config.clientId;
+                CONFIG.azure.auth.authority = 'https://login.microsoftonline.com/' + config.tenantId;
+                configLoaded = true;
+                console.log('✅ Configuración dinámica cargada');
+            }
+        } catch (error) {
+            console.warn('⚠️ No se pudo cargar la configuración dinámica:', error);
+        } finally {
+            configPromise = null;
+        }
+    })();
+
+    return configPromise;
+}
+    `);
+});
+
 // Health check
 app.use('/api/health', healthRoutes);
 
