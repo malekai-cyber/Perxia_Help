@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Perxia Help - Asistente IA Empresarial">
+    <title>Perxia Help</title>
+    <link rel="stylesheet" href="/css/variables.css">
+    <link rel="stylesheet" href="/css/landing.css">
+</head>
+<body>
+    <div class="landing">
+        <!-- Ambient Background -->
+        <div class="ambient-glow"></div>
+
+        <!-- Minimal Header -->
+        <header class="header">
+            <a href="/" class="brand">
+                <svg class="brand-icon" viewBox="0 0 32 32" fill="none">
+                    <!-- Casco de piloto/robot -->
+                    <ellipse cx="16" cy="14" rx="10" ry="9" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <!-- Visor -->
+                    <path d="M8 12h16v4c0 2-3 4-8 4s-8-2-8-4v-4z" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <!-- Ojos LED -->
+                    <circle cx="12" cy="14" r="2" fill="currentColor"/>
+                    <circle cx="20" cy="14" r="2" fill="currentColor"/>
+                    <!-- Antena -->
+                    <line x1="16" y1="5" x2="16" y2="2" stroke="currentColor" stroke-width="1.5"/>
+                    <circle cx="16" cy="2" r="1.5" fill="currentColor"/>
+                    <!-- Base del casco -->
+                    <path d="M9 20c0 0 2 3 7 3s7-3 7-3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+                    <!-- Auriculares -->
+                    <rect x="4" y="11" width="3" height="6" rx="1" fill="currentColor" opacity="0.6"/>
+                    <rect x="25" y="11" width="3" height="6" rx="1" fill="currentColor" opacity="0.6"/>
+                </svg>
+                <span>Perxia Help</span>
+            </a>
+            <span class="company">Periferia IT Group</span>
+        </header>
+
+        <!-- Hero Centered -->
+        <main class="hero">
+            <div class="hero-content">
+                <h1>Tu asistente inteligente<br>para el día a día corporativo</h1>
+                <p class="hero-sub">Consultas, documentos y casos de éxito en un solo lugar.<br>Diseñado para equipos que necesitan respuestas rápidas y precisas.</p>
+                
+                <button id="loginBtn" class="login-btn">
+                    <svg class="ms-icon" viewBox="0 0 21 21" fill="none">
+                        <rect width="10" height="10" fill="#f25022"/>
+                        <rect x="11" width="10" height="10" fill="#7fba00"/>
+                        <rect y="11" width="10" height="10" fill="#00a4ef"/>
+                        <rect x="11" y="11" width="10" height="10" fill="#ffb900"/>
+                    </svg>
+                    Ingresar con Microsoft
+                </button>
+            </div>
+
+            <!-- Preview Card -->
+            <div class="preview">
+                <div class="preview-window">
+                    <div class="preview-header">
+                        <div class="preview-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                        <span class="preview-title">Perxia Help</span>
+                    </div>
+                    <div class="preview-chat">
+                        <div class="chat-msg assistant">
+                            <div class="avatar">P</div>
+                            <div class="msg">¡Hola! Soy Perxia. ¿En qué puedo ayudarte hoy?</div>
+                        </div>
+                        <div class="chat-msg user">
+                            <div class="msg">Necesito un resumen del último informe de ventas</div>
+                        </div>
+                        <div class="chat-msg assistant">
+                            <div class="avatar">P</div>
+                            <div class="msg">
+                                <span class="typing">Analizando documento...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Features Strip -->
+        <section class="features">
+            <article class="feature">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                    </svg>
+                </div>
+                <h3>Consultas Guiadas</h3>
+                <p>Escenarios preconfigurados para resolver dudas de negocio con contexto.</p>
+            </article>
+            <article class="feature">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                </div>
+                <h3>Documentos Inteligentes</h3>
+                <p>Resúmenes ejecutivos y técnicos que transforman archivos en acciones.</p>
+            </article>
+            <article class="feature">
+                <div class="feature-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                        <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                </div>
+                <h3>Casos de Éxito</h3>
+                <p>Historias validadas listas para compartir y acelerar decisiones.</p>
+            </article>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>© 2025 Periferia IT Group · Acceso exclusivo para colaboradores</p>
+        </footer>
+    </div>
+
+    <script src="/config.js"></script>
+    <script src="https://alcdn.msauth.net/browser/2.38.1/js/msal-browser.min.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/app-landing.js"></script>
+</body>
+</html>
