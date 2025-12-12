@@ -291,4 +291,4 @@ npm run dev
 ## 📞 Soporte
 
 - **Documentación técnica**: [SETUP.md](./SETUP.md)
-- **Email**: soporte@perxia.com
+- **Email**: danielgarcia@periferia-it.com
